@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Secure Code Assessment Tool - Learn about Static Security Testing, SAST methodology, and Cyber Security internship project overview.">
+  <title>About | Secure Code Assessment Tool</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Master Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/scanner.css">
+  <link rel="stylesheet" href="css/report.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="fa-solid fa-shield-cat"></i>
+        <span>SECURE<span class="gradient-text">CODE</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="scanner.html" class="nav-link">Code Scanner</a></li>
+        <li><a href="report.html" class="nav-link">Vulnerability Report</a></li>
+        <li><a href="documentation.html" class="nav-link">Documentation</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <a href="scanner.html" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-bolt"></i> Launch Scanner
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main About Content -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- Hero Banner -->
+      <div class="section-header" style="margin-bottom: 3.5rem;">
+        <div class="section-subtitle">Project Overview</div>
+        <h1 class="hero-title">About <span class="gradient-text">Secure Code Assessment</span></h1>
+        <p class="section-desc">Developed as a hands-on project for Cyber Security Internship to demonstrate static analysis security review methodologies and OWASP vulnerability mapping.</p>
+      </div>
+
+      <!-- SAST Methodology Explanation -->
+      <div class="glass-card" style="margin-bottom: 3rem; padding: 2.5rem;">
+        <h2 style="margin-bottom: 1rem;"><i class="fa-solid fa-microscope" style="color: var(--accent-cyan);"></i> What is Static Application Security Testing (SAST)?</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">
+          Static Application Security Testing (SAST) is a white-box security testing methodology that analyzes application source code without executing the code. SAST inspects the inner workings of an application at rest to catch software vulnerabilities early in the Software Development Life Cycle (SDLC) — commonly referred to as <strong>"Shift Left" security</strong>.
+        </p>
+
+        <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-bottom: 0;">
+          <div style="background: var(--bg-tertiary); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-cyan); margin-bottom: 0.5rem;"><i class="fa-solid fa-bolt"></i> Early Vulnerability Detection</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Identifies security bugs in developer environments before code reaches production servers.</p>
+          </div>
+
+          <div style="background: var(--bg-tertiary); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-cyan); margin-bottom: 0.5rem;"><i class="fa-solid fa-list-check"></i> Precise Line Marking</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Pinpoints exact file line numbers containing insecure function calls or hardcoded credentials.</p>
+          </div>
+
+          <div style="background: var(--bg-tertiary); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-cyan); margin-bottom: 0.5rem;"><i class="fa-solid fa-shield"></i> Remediation Guidance</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Provides developers with compliant secure code replacement snippets and remediation steps.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison: SAST vs DAST -->
+      <div class="glass-card" style="margin-bottom: 3rem; padding: 2.5rem;">
+        <h2 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-scale-balanced" style="color: var(--accent-violet);"></i> SAST vs. DAST Security Assessment</h2>
+        
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color-glow); color: var(--accent-cyan);">
+                <th style="padding: 0.75rem 1rem;">Feature</th>
+                <th style="padding: 0.75rem 1rem;">SAST (Static Testing)</th>
+                <th style="padding: 0.75rem 1rem;">DAST (Dynamic Testing)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem 1rem; font-weight: 600;">Testing Type</td>
+                <td style="padding: 0.75rem 1rem; color: var(--text-secondary);">White-Box (Code Analysis)</td>
+                <td style="padding: 0.75rem 1rem; color: var(--text-secondary);">Black-Box (Runtime Behavior)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem 1rem; font-weight: 600;">Execution Requirements</td>
+                <td style="padding: 0.75rem 1rem; color: var(--text-secondary);">No application execution needed</td>
+                <td style="padding: 0.75rem 1rem; color: var(--text-secondary);">Requires live running server</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem 1rem; font-weight: 600;">Vulnerability Focus</td>
+                <td style="padding: 0.75rem 1rem; color: var(--text-secondary);">SQLi, XSS, Hardcoded Keys, Command Injection</td>
+                <td style="padding: 0.75rem 1rem; color: var(--text-secondary);">Authentication bypass, Header misconfigurations</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem 1rem; font-weight: 600;">Remediation Speed</td>
+                <td style="padding: 0.75rem 1rem; color: var(--sev-info); font-weight: 600;">Fast (Shows exact line number)</td>
+                <td style="padding: 0.75rem 1rem; color: var(--text-secondary);">Slower (Requires root cause analysis)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Internship & Author Card -->
+      <div class="glass-card" style="padding: 2.5rem;">
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #000;">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+          <div>
+            <h3>Cyber Security Internship Project</h3>
+            <p style="color: var(--accent-cyan); font-weight: 600;">Track: Secure Software Development & SAST Review</p>
+            <p style="color: var(--text-secondary); margin-top: 0.4rem; max-width: 700px;">
+              Built as an internship deliverable demonstrating automated source code auditing, pattern matching, custom rule engine creation, OWASP Top 10 mapping, dynamic charts visualization, and audit PDF report generation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Secure Code Assessment Tool. All rights reserved.</div>
+        <div>Cybersecurity Internship Project</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/rules.js"></script>
+  <script src="js/scanner.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

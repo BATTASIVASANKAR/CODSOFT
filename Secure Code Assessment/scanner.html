@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Static Source Code Security Reviewer & Vulnerability Scanner - Upload code in Python, JavaScript, Java, C++, PHP for real-time security assessment.">
+  <title>Code Scanner | Secure Code Assessment Tool</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Master Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/scanner.css">
+  <link rel="stylesheet" href="css/report.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="fa-solid fa-shield-cat"></i>
+        <span>SECURE<span class="gradient-text">CODE</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="scanner.html" class="nav-link active">Code Scanner</a></li>
+        <li><a href="report.html" class="nav-link">Vulnerability Report</a></li>
+        <li><a href="documentation.html" class="nav-link">Documentation</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <a href="report.html" class="btn btn-outline btn-sm">
+          <i class="fa-solid fa-file-contract"></i> View Report
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Scanner Content -->
+  <main class="main-content">
+    <div class="container scanner-container">
+
+      <!-- Header & File Selector Bar -->
+      <div class="scanner-header">
+        <div>
+          <h2>Static Security <span class="gradient-text">Code Analyzer</span></h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">Upload or paste your source code to detect security flaws, vulnerabilities, and OWASP Top 10 risks.</p>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <span id="scanStatusBadge" class="badge badge-info"><i class="fa-solid fa-check"></i> Ready to Scan</span>
+          <button class="btn btn-primary" id="runScanBtn">
+            <i class="fa-solid fa-shield-virus"></i> Run SAST Scan
+          </button>
+        </div>
+      </div>
+
+      <!-- Drag & Drop Upload Zone -->
+      <div class="dropzone-container" id="dropzone">
+        <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+        <h3 class="dropzone-title">Drag & Drop Source Code File Here</h3>
+        <p class="dropzone-desc">Supports <strong>.py, .js, .java, .cpp, .php</strong> source code files.</p>
+        <input type="file" id="fileInput" class="file-input-hidden" accept=".py,.js,.jsx,.ts,.tsx,.java,.cpp,.c,.h,.php">
+        
+        <div class="sample-selector" onclick="event.stopPropagation();">
+          <span class="sample-selector-label">Or Load Vulnerable Sample:</span>
+          <button class="sample-chip active" data-sample="vulnerable_sample.py"><i class="fa-brands fa-python"></i> Python (.py)</button>
+          <button class="sample-chip" data-sample="vulnerable_sample.js"><i class="fa-brands fa-js"></i> JavaScript (.js)</button>
+          <button class="sample-chip" data-sample="vulnerable_sample.java"><i class="fa-brands fa-java"></i> Java (.java)</button>
+          <button class="sample-chip" data-sample="vulnerable_sample.cpp"><i class="fa-solid fa-code"></i> C++ (.cpp)</button>
+          <button class="sample-chip" data-sample="vulnerable_sample.php"><i class="fa-brands fa-php"></i> PHP (.php)</button>
+        </div>
+      </div>
+
+      <!-- Split Screen: Code Viewer & Live Findings -->
+      <div class="scanner-grid">
+
+        <!-- Code Viewer & Editor Panel -->
+        <div class="code-viewer-panel">
+          <div class="code-viewer-header">
+            <div class="file-info">
+              <i class="fa-solid fa-file-code"></i>
+              <span id="fileNameDisplay">vulnerable_sample.py</span>
+            </div>
+            <div class="code-actions">
+              <button class="btn btn-secondary btn-sm" onclick="document.getElementById('codeEditor').value = '';" title="Clear Code">
+                <i class="fa-solid fa-trash-can"></i> Clear
+              </button>
+            </div>
+          </div>
+
+          <div class="code-content-wrapper">
+            <textarea id="codeEditor" class="code-editor-textarea" placeholder="// Paste source code here or upload a file..." spellcheck="false"></textarea>
+          </div>
+        </div>
+
+        <!-- Live Findings Panel -->
+        <div class="glass-card findings-panel">
+          <div class="findings-header">
+            <h3>Security Findings <span id="totalFindingsBadge" class="findings-count-badge">0</span></h3>
+            <a href="report.html" class="btn btn-outline btn-sm">Full Report <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <div class="findings-list" id="findingsList">
+            <!-- Findings dynamically populated via app.js -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Secure Code Assessment Tool. All rights reserved.</div>
+        <div>Cybersecurity Internship Project</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/rules.js"></script>
+  <script src="js/scanner.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

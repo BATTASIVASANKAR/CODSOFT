@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentation & Security Rules Guide - OWASP Top 10 Mapping, Severity Scoring Matrix, and SAST Usage Guide.">
+  <title>Documentation | Secure Code Assessment Tool</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Master Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/scanner.css">
+  <link rel="stylesheet" href="css/report.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="fa-solid fa-shield-cat"></i>
+        <span>SECURE<span class="gradient-text">CODE</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="scanner.html" class="nav-link">Code Scanner</a></li>
+        <li><a href="report.html" class="nav-link">Vulnerability Report</a></li>
+        <li><a href="documentation.html" class="nav-link active">Documentation</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <a href="scanner.html" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-bolt"></i> Launch Scanner
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Documentation Content -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="section-header" style="margin-bottom: 3rem;">
+        <div class="section-subtitle">User Guide & Rules Reference</div>
+        <h1 class="hero-title">Tool <span class="gradient-text">Documentation</span></h1>
+        <p class="section-desc">Learn how the SAST Security Engine evaluates code, maps findings to OWASP Top 10 categories, and generates security scores.</p>
+      </div>
+
+      <!-- Quick Start User Guide -->
+      <div class="glass-card" style="margin-bottom: 3rem; padding: 2.5rem;">
+        <h2 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-book-open" style="color: var(--accent-cyan);"></i> How to Use the Scanner</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+          <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: var(--radius-md); border-top: 3px solid var(--accent-cyan);">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 0.5rem;">Step 01</div>
+            <h4 style="margin-bottom: 0.5rem;">Upload or Paste Source Code</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Drag and drop a <code>.py</code>, <code>.js</code>, <code>.java</code>, <code>.cpp</code>, or <code>.php</code> file, or choose from the built-in vulnerable sample code buttons.</p>
+          </div>
+
+          <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: var(--radius-md); border-top: 3px solid var(--accent-blue);">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.5rem;">Step 02</div>
+            <h4 style="margin-bottom: 0.5rem;">Execute Static Analysis</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Click <strong>"Run SAST Scan"</strong>. The browser rule engine scans line-by-line using pattern matchers and regex AST rules.</p>
+          </div>
+
+          <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: var(--radius-md); border-top: 3px solid var(--accent-violet);">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-violet); margin-bottom: 0.5rem;">Step 03</div>
+            <h4 style="margin-bottom: 0.5rem;">Inspect & Remediate</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Click findings to jump to exact code lines. Review the risk explanation, fix guidance, and secure replacement code.</p>
+          </div>
+
+          <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: var(--radius-md); border-top: 3px solid #10b981;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: #10b981; margin-bottom: 0.5rem;">Step 04</div>
+            <h4 style="margin-bottom: 0.5rem;">Export Audit Report</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Navigate to <strong>Vulnerability Report</strong> to view Chart.js severity graphs and download an official formatted PDF report.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Severity Rating System -->
+      <div class="glass-card" style="margin-bottom: 3rem; padding: 2.5rem;">
+        <h2 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-layer-group" style="color: var(--accent-violet);"></i> Severity Rating Matrix</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+          <div style="background: var(--sev-critical-bg); border: 1px solid rgba(239,68,68,0.3); padding: 1.25rem; border-radius: var(--radius-md);">
+            <span class="badge badge-critical" style="margin-bottom: 0.5rem;">CRITICAL (25 Points)</span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Direct Remote Code Execution (RCE), SQL Injection, hardcoded production secrets, or unescaped command injection.</p>
+          </div>
+
+          <div style="background: var(--sev-high-bg); border: 1px solid rgba(249,115,22,0.3); padding: 1.25rem; border-radius: var(--radius-md);">
+            <span class="badge badge-high" style="margin-bottom: 0.5rem;">HIGH (15 Points)</span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Cross-Site Scripting (XSS), path traversal file read, unsafe deserialization, or broken access controls.</p>
+          </div>
+
+          <div style="background: var(--sev-medium-bg); border: 1px solid rgba(234,179,8,0.3); padding: 1.25rem; border-radius: var(--radius-md);">
+            <span class="badge badge-medium" style="margin-bottom: 0.5rem;">MEDIUM (8 Points)</span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Weak password hashing (MD5/SHA1), debug mode enabled in production, or disabled TLS certificate verification.</p>
+          </div>
+
+          <div style="background: var(--sev-low-bg); border: 1px solid rgba(59,130,246,0.3); padding: 1.25rem; border-radius: var(--radius-md);">
+            <span class="badge badge-low" style="margin-bottom: 0.5rem;">LOW (3 Points)</span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Sensitive information printed to console logs or non-critical configuration misconfigurations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- OWASP Top 10 (2021) Mapping Reference Table -->
+      <div class="glass-card" style="padding: 2.5rem;">
+        <h2 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-shield-halved" style="color: var(--accent-cyan);"></i> OWASP Top 10 (2021) Security Mapping</h2>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color-glow); color: var(--accent-cyan); text-align: left;">
+                <th style="padding: 0.75rem;">OWASP Category</th>
+                <th style="padding: 0.75rem;">Description</th>
+                <th style="padding: 0.75rem;">Rule Pattern Covered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">A01:2021 - Broken Access Control</td>
+                <td style="padding: 0.75rem; color: var(--text-secondary);">Unauthorized file access & directory traversal flaws.</td>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">RULE_PATH_TRAVERSAL</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">A02:2021 - Cryptographic Failures</td>
+                <td style="padding: 0.75rem; color: var(--text-secondary);">Weak hash algorithms (MD5/SHA1) & disabled SSL TLS checks.</td>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">RULE_WEAK_HASH_MD5_SHA1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">A03:2021 - Injection</td>
+                <td style="padding: 0.75rem; color: var(--text-secondary);">SQL Injection, Command Injection, XSS, and eval() functions.</td>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">RULE_SQLI_STRING_CONCAT, RULE_CMD_INJECTION_OS</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">A05:2021 - Security Misconfiguration</td>
+                <td style="padding: 0.75rem; color: var(--text-secondary);">Debug flags left active in production code.</td>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">RULE_DEBUG_MODE_ENABLED</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-weight: 700;">A07:2021 - Identification & Auth Failures</td>
+                <td style="padding: 0.75rem; color: var(--text-secondary);">Plaintext hardcoded passwords, API keys, and secret tokens.</td>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">RULE_HARDCODED_SECRET_01, RULE_HARDCODED_PASS_02</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Secure Code Assessment Tool. All rights reserved.</div>
+        <div>Cybersecurity Internship Documentation</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/rules.js"></script>
+  <script src="js/scanner.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

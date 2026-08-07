@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Code Assessment Tool</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Secure Scan</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header class="hero">
+        <h1>Secure Code Assessment Tool</h1>
+        <p class="tagline">Quick, offline scanning for common security issues</p>
+        <button class="cta-btn" id="start-scan-btn">Start Scan</button>
+    </header>
+    <section class="scanner-section" id="scanner">
+        <h2>Upload Source Files</h2>
+        <input type="file" id="file-input" multiple accept=".py,.js,.java,.cpp,.php" />
+        <div id="report" class="report"></div>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2026 Secure Code Assessment – Internship Project</p>
+    </footer>
+    <script src="assets/js/nav.js"></script>
+    <script src="assets/js/scanner.js"></script>
+</body>
+</html>

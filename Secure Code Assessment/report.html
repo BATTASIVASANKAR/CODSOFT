@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vulnerability Assessment Report - Detailed SAST Findings, Severity Metrics, OWASP Top 10 Mapping, and Downloadable PDF Security Audit.">
+  <title>Vulnerability Report | Secure Code Assessment Tool</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- html2pdf CDN for Client-Side PDF Generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <!-- Master Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/scanner.css">
+  <link rel="stylesheet" href="css/report.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="fa-solid fa-shield-cat"></i>
+        <span>SECURE<span class="gradient-text">CODE</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="scanner.html" class="nav-link">Code Scanner</a></li>
+        <li><a href="report.html" class="nav-link active">Vulnerability Report</a></li>
+        <li><a href="documentation.html" class="nav-link">Documentation</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <button class="btn btn-primary btn-sm" id="downloadPdfBtn">
+          <i class="fa-solid fa-file-pdf"></i> Download PDF Report
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Report Content -->
+  <main class="main-content" id="reportViewContainer">
+    <div class="container">
+
+      <!-- Executive Header Banner -->
+      <div class="report-banner">
+        <!-- Security Score Circle -->
+        <div class="score-circle-container">
+          <div class="score-circle">
+            <div class="score-inner">
+              <div class="score-grade grade-C" id="scoreGrade">C</div>
+            </div>
+          </div>
+          <div class="score-label" id="scoreNumber">65/100 Score</div>
+        </div>
+
+        <!-- Metric Cards Grid -->
+        <div class="report-summary-cards">
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <span>Target File</span>
+              <i class="fa-solid fa-file-code"></i>
+            </div>
+            <div class="summary-card-value" id="reportFilename" style="font-size: 1.25rem; word-break: break-all;">vulnerable_sample.py</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);" id="reportDate">Aug 2, 2026</div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <span>Total Vulnerabilities</span>
+              <i class="fa-solid fa-bug" style="color: var(--sev-critical);"></i>
+            </div>
+            <div class="summary-card-value" id="totalVulnsMetric">0</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Detected Flaws</div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <span>Critical Severity</span>
+              <i class="fa-solid fa-triangle-exclamation" style="color: var(--sev-critical);"></i>
+            </div>
+            <div class="summary-card-value" id="criticalCountMetric" style="color: var(--sev-critical);">0</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Immediate Action</div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <span>High Severity</span>
+              <i class="fa-solid fa-circle-exclamation" style="color: var(--sev-high);"></i>
+            </div>
+            <div class="summary-card-value" id="highCountMetric" style="color: var(--sev-high);">0</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">High Risk</div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <span>Lines Analyzed</span>
+              <i class="fa-solid fa-align-left" style="color: var(--accent-cyan);"></i>
+            </div>
+            <div class="summary-card-value" id="totalLinesMetric">0</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">LOC</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="charts-grid">
+        <div class="glass-card chart-card">
+          <div class="chart-header">
+            <h3 class="chart-title"><i class="fa-solid fa-chart-pie" style="color: var(--accent-cyan);"></i> Vulnerabilities by Severity</h3>
+          </div>
+          <div class="chart-body">
+            <canvas id="severityChart"></canvas>
+          </div>
+        </div>
+
+        <div class="glass-card chart-card">
+          <div class="chart-header">
+            <h3 class="chart-title"><i class="fa-solid fa-chart-simple" style="color: var(--accent-violet);"></i> OWASP Top 10 Breakdown</h3>
+          </div>
+          <div class="chart-body">
+            <canvas id="owaspChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search & Filter Bar -->
+      <div class="report-controls">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchVulnInput" class="search-input" placeholder="Search vulnerability title, description, or snippet...">
+        </div>
+
+        <div class="filter-group">
+          <label for="severityFilterSelect" style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 600;">Filter Severity:</label>
+          <select id="severityFilterSelect" class="select-input">
+            <option value="ALL">All Severities</option>
+            <option value="CRITICAL">Critical Only</option>
+            <option value="HIGH">High Only</option>
+            <option value="MEDIUM">Medium Only</option>
+            <option value="LOW">Low Only</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Detailed Vulnerabilities Accordion -->
+      <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+        <h3>Detailed Vulnerability Assessment & Remediation</h3>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Click on any vulnerability to inspect line numbers, risk analysis, and secure code replacement examples.</p>
+      </div>
+
+      <div class="vulnerabilities-list" id="vulnerabilitiesAccordion">
+        <!-- Accordion items rendered dynamically via app.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Secure Code Assessment Tool. All rights reserved.</div>
+        <div>Cybersecurity Internship Assessment Report</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/rules.js"></script>
+  <script src="js/scanner.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/pdf-generator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
