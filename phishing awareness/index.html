@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phishing Awareness Program</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">Phishing Awareness</div>
+        <nav class="nav" id="navMenu"><ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#what-is-phishing">What is Phishing?</a></li>
+            <li><a href="#types-of-phishing">Types of Phishing</a></li>
+            <li><a href="#identify-phishing">How to Identify Phishing</a></li>
+            <li><a href="#social-engineering">Social Engineering</a></li>
+            <li><a href="#prevention-tips">Prevention Tips</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul></nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+    </header>
+    <main>
+        <section id="home" class="section">
+            <h1>Phishing Awareness Program</h1>
+            <p>Understanding phishing is the first step to staying safe online.</p>
+        </section>
+        <section id="what-is-phishing" class="section">
+            <h2>What is Phishing?</h2>
+            <p>Phishing is a trick where attackers pretend to be trustworthy sources to steal personal or confidential information.</p>
+        </section>
+        <section id="types-of-phishing" class="section">
+            <h2>Types of Phishing</h2>
+            <ul>
+                <li><strong>Email Phishing</strong> – generic emails that appear to come from a reputable company.</li>
+                <li><strong>Spear Phishing</strong> – targeted attacks aimed at a specific person or organization.</li>
+                <li><strong>Smishing</strong> – phishing attempts sent via SMS/text messages.</li>
+                <li><strong>Vishing</strong> – voice‑based phishing, often carried out over the phone.</li>
+            </ul>
+        </section>
+        <section id="identify-phishing" class="section">
+            <h2>How to Identify Phishing</h2>
+            <ul>
+                <li>Suspicious emails – check sender address and look for generic greetings.</li>
+                <li>Fake login pages – verify the URL and look for misspellings.</li>
+                <li>Fraudulent websites – hover over links to see the real destination.</li>
+                <li>Suspicious links – never click links you do not trust.</li>
+                <li>Unknown attachments – do not open unexpected files.</li>
+                <li>Urgent messages – beware of pressure to act quickly.</li>
+            </ul>
+            <div class="phishguard">
+                <label for="phish-url">Check URL with PhishGuard</label>
+                <input type="url" id="phish-url" placeholder="https://example.com" />
+                <button id="phish-analyze">Analyze with PhishGuard</button>
+                <p class="phish-msg">Paste a suspicious URL and click “Analyze with PhishGuard” to check it using our machine‑learning detection tool.</p>
+            </div>
+        </section>
+        <section id="social-engineering" class="section">
+            <h2>Social Engineering Techniques</h2>
+            <p>Attackers often exploit human psychology. Common techniques include:</p>
+            <ul>
+                <li>Pretexting – creating a fabricated scenario to obtain information.</li>
+                <li>Baiting – offering something enticing to lure victims.</li>
+                <li>Tailgating – following an authorized person into a restricted area.</li>
+                <li>Quid pro quo – promising a benefit in exchange for information.</li>
+            </ul>
+        </section>
+        <section id="prevention-tips" class="section">
+            <h2>Prevention Tips</h2>
+            <ul>
+                <li>Use strong, unique passwords for each service.</li>
+                <li>Enable Two‑Factor Authentication wherever possible.</li>
+                <li>Verify website URLs before entering credentials.</li>
+                <li>Avoid clicking on unknown or suspicious links.</li>
+                <li>Keep software and operating systems up to date.</li>
+            </ul>
+        </section>
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <form id="contactForm" novalidate>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Phishing Awareness Program</p></footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
